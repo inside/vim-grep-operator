@@ -11,8 +11,10 @@ vnoremap <unique> <script> <Plug>GrepOperator <SID>GrepOperator
 vnoremap <silent> <SID>GrepOperator :<c-u>call <SID>GrepOperator(visualmode())<cr>
 
 function! s:GrepOperator(type)
-    " Can't use @ double quote, becase a double quote is a vim script comment
+    " Can't use @", because a double quote is a vimscript comment
     let saved_unamed_register = @@
+    let filenames = []
+    let base_prompt = "Enter one filename at a time or press <enter> to skip"
 
     if a:type ==# 'v'
         " Yank the last visual selection
@@ -27,9 +29,33 @@ function! s:GrepOperator(type)
         return
     endif
 
+    while 1
+        if empty(filenames)
+            let prompt = base_prompt . ': '
+        else
+            let prompt = printf(base_prompt . ' (%s): ', join(filenames, ', '))
+        endif
+
+        call inputsave()
+        let filename = input(prompt, '', 'file')
+        call inputrestore()
+
+        if len(filename) == 0
+            break
+        endif
+
+        call add(filenames, shellescape(filename))
+    endwhile
+
     " Execute the command and don't jump to the first match (The :grep! form
     " does that)
-    silent execute "grep! " . shellescape(@@) . " ."
+    if empty(filenames)
+        " grep in the current directory
+        silent execute 'grep! ' . shellescape(@@) . ' .'
+    else
+        " grep in the listed directories
+        silent execute 'grep! ' . shellescape(@@) . ' ' . join(filenames, ' ')
+    endif
 
     " Open the quick fix window
     copen

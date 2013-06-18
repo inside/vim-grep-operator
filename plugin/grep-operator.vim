@@ -1,8 +1,14 @@
 " The Grep Operator plugin, inspired by Steve Losh and
 " his book: http://learnvimscriptthehardway.stevelosh.com/
+" Here are example mappings you should put in your .vimrc:
+" nmap <unique> <Leader>g <Plug>GrepOperator
+" vmap <unique> <Leader>g <Plug>GrepOperator
 
-nnoremap <leader>G :set operatorfunc=<SID>GrepOperator<cr>g@
-vnoremap <leader>G :<c-u>call <SID>GrepOperator(visualmode())<cr>
+nnoremap <unique> <script> <Plug>GrepOperator <SID>GrepOperator
+nnoremap <silent> <SID>GrepOperator :set operatorfunc=<SID>GrepOperator<cr>g@
+
+vnoremap <unique> <script> <Plug>GrepOperator <SID>GrepOperator
+vnoremap <silent> <SID>GrepOperator :<c-u>call <SID>GrepOperator(visualmode())<cr>
 
 function! s:GrepOperator(type)
     " Can't use @ double quote, becase a double quote is a vim script comment

@@ -23,7 +23,7 @@ function! s:GrepOperator(type)
 
     " Execute the command and don't jump to the first match (The :grep! form
     " does that)
-    silent execute "grep! -R " . shellescape(@@) . " ."
+    silent execute "grep! " . shellescape(@@) . " ."
 
     " Open the quick fix window
     copen

@@ -18,11 +18,11 @@ nnoremap <silent> <SID>GrepOperatorWithFilenamePrompt :set operatorfunc=<SID>Gre
 vnoremap <unique> <script> <Plug>GrepOperatorWithFilenamePrompt <SID>GrepOperatorWithFilenamePrompt
 vnoremap <silent> <SID>GrepOperatorWithFilenamePrompt :<c-u>call <SID>GrepOperatorWithFilenamePrompt(visualmode())<cr>
 
-function s:GrepOperatorOnCurrentDirectory(type)
+function! s:GrepOperatorOnCurrentDirectory(type)
     call s:GrepOperator(a:type, 0)
 endfunction
 
-function s:GrepOperatorWithFilenamePrompt(type)
+function! s:GrepOperatorWithFilenamePrompt(type)
     call s:GrepOperator(a:type, 1)
 endfunction
 
@@ -45,7 +45,7 @@ function! s:GrepOperator(type, needs_prompt)
     let @@ = s:saved_unamed_register
 endfunction
 
-function s:GetPattern(type)
+function! s:GetPattern(type)
     if a:type ==# 'v'
         " Yank the last visual selection
         normal! gvy 

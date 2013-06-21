@@ -66,7 +66,7 @@ endfunction
 function! s:Grep(pattern, filenames)
     " Execute the command and don't jump to the first match (The :grep! form
     " does that)
-    silent execute 'grep! ' . shellescape(a:pattern) . ' ' . join(a:filenames, ' ')
+    silent execute 'grep! ' . shellescape(a:pattern) . ' ' . join(map(copy(a:filenames), "shellescape(v:val)"), ' ')
 endfunction
 
 function! s:GetFilenames(needs_prompt)
@@ -92,7 +92,7 @@ function! s:GetFilenames(needs_prompt)
             break
         endif
 
-        call add(filenames, shellescape(filename))
+        call add(filenames, filename)
     endwhile
 
     return filenames

@@ -7,16 +7,40 @@
 " vmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
 
 " Mappings for the current directory grep
-nnoremap <unique> <script> <Plug>GrepOperatorOnCurrentDirectory <SID>GrepOperatorOnCurrentDirectory
-nnoremap <silent> <SID>GrepOperatorOnCurrentDirectory :set operatorfunc=<SID>GrepOperatorOnCurrentDirectory<cr>g@
-vnoremap <unique> <script> <Plug>GrepOperatorOnCurrentDirectory <SID>GrepOperatorOnCurrentDirectory
-vnoremap <silent> <SID>GrepOperatorOnCurrentDirectory :<c-u>call <SID>GrepOperatorOnCurrentDirectory(visualmode())<cr>
+nnoremap
+            \ <unique> <script>
+            \ <Plug>GrepOperatorOnCurrentDirectory
+            \ <SID>GrepOperatorOnCurrentDirectory
+nnoremap
+            \ <silent>
+            \ <SID>GrepOperatorOnCurrentDirectory
+            \ :set operatorfunc=<SID>GrepOperatorOnCurrentDirectory<cr>g@
+vnoremap
+            \ <unique> <script>
+            \ <Plug>GrepOperatorOnCurrentDirectory
+            \ <SID>GrepOperatorOnCurrentDirectory
+vnoremap
+            \ <silent>
+            \ <SID>GrepOperatorOnCurrentDirectory
+            \ :<c-u>call <SID>GrepOperatorOnCurrentDirectory(visualmode())<cr>
 
 " Mappings with filenames prompt
-nnoremap <unique> <script> <Plug>GrepOperatorWithFilenamePrompt <SID>GrepOperatorWithFilenamePrompt
-nnoremap <silent> <SID>GrepOperatorWithFilenamePrompt :set operatorfunc=<SID>GrepOperatorWithFilenamePrompt<cr>g@
-vnoremap <unique> <script> <Plug>GrepOperatorWithFilenamePrompt <SID>GrepOperatorWithFilenamePrompt
-vnoremap <silent> <SID>GrepOperatorWithFilenamePrompt :<c-u>call <SID>GrepOperatorWithFilenamePrompt(visualmode())<cr>
+nnoremap
+            \ <unique> <script>
+            \ <Plug>GrepOperatorWithFilenamePrompt
+            \ <SID>GrepOperatorWithFilenamePrompt
+nnoremap
+            \ <silent>
+            \ <SID>GrepOperatorWithFilenamePrompt
+            \ :set operatorfunc=<SID>GrepOperatorWithFilenamePrompt<cr>g@
+vnoremap
+            \ <unique> <script>
+            \ <Plug>GrepOperatorWithFilenamePrompt
+            \ <SID>GrepOperatorWithFilenamePrompt
+vnoremap
+            \ <silent>
+            \ <SID>GrepOperatorWithFilenamePrompt
+            \ :<c-u>call <SID>GrepOperatorWithFilenamePrompt(visualmode())<cr>
 
 function! s:GrepOperatorOnCurrentDirectory(type)
     call s:GrepOperator(a:type, 0)
@@ -66,7 +90,10 @@ endfunction
 function! s:Grep(pattern, filenames)
     " Execute the command and don't jump to the first match (The :grep! form
     " does that)
-    silent execute 'grep! ' . shellescape(a:pattern) . ' ' . join(map(copy(a:filenames), "shellescape(v:val)"), ' ')
+    silent execute
+                \ 'grep! '
+                \ . shellescape(a:pattern) . ' '
+                \ . join(map(copy(a:filenames), "shellescape(v:val)"), ' ')
 endfunction
 
 function! s:GetFilenames(needs_prompt)

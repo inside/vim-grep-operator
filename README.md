@@ -14,8 +14,8 @@ This plugin's has 2 goals:
 
 Use pathogen or a pathogen compatible plugin manager.
 
-If you are using git for source code management you should have your grepprg
-option set to some thing like this:
+If you are using git for source code management, you should have your grepprg
+option set to something like this:
 
     set grepprg=git\ grep\ -n\ $*
 

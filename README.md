@@ -16,6 +16,7 @@ Use pathogen or a pathogen compatible plugin manager.
 
 If you are using git for source code management you should have your grepprg
 option set to some thing like this:
+
     set grepprg=git\ grep\ -n\ $*
 
 ## Suggested ~/.vimrc mappings
@@ -29,9 +30,12 @@ option set to some thing like this:
 
 `<leader>giw` will grep the current directory for the word under the cursor and
 open the quickfix window.
+
 `<leader>ga(` will grep for what's inside the parenthesis including the
 parenthesis.
+
 `<leader>gi'` will grep for what's inside the quotes.
+
 Visually select some characters and type `<leader>g`. This will grep for the
 selected text.
 

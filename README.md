@@ -1,4 +1,37 @@
-vim-grep-operator
-=================
+# The vim grep operator
 
-The vim grep operator inspired by Steve Losh
+## Description
+
+The vim grep operator plugin, inspired by Steve Losh and
+his book: http://learnvimscriptthehardway.stevelosh.com/
+
+This plugin's has 2 goals:
+
+* bring motion and visual selection to the :grep command
+* open the quickfix window on the fly for easy file match navigation
+
+## Installation
+
+Use pathogen or a pathogen compatible plugin manager.
+
+## Suggested ~/.vimrc mappings
+
+    nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
+    vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
+    nmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
+    vmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
+
+## Examples
+
+`<leader>giw` will grep the current directory for the word under the cursor and
+open the quickfix window.
+
+`<leader>ga(` will grep for what's inside the parenthesis including the
+parenthesis.
+
+`<leader>gi'` will grep for what's inside the quotes.
+
+Visually select some characters and type `<leader>g`. This will grep for the
+selected text.
+
+You can also be prompted for files to grep by using the `<leader><leader>g` mapping.

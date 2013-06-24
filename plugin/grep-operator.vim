@@ -1,10 +1,7 @@
-" The Grep Operator plugin, inspired by Steve Losh and
-" his book: http://learnvimscriptthehardway.stevelosh.com/
-" Here are example mappings you should put in your .vimrc:
-" nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
-" vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
-" nmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
-" vmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
+" File:        grep-operator.vim
+" Maintainer:  Yann Thomas-Gérard <inside at gmail dot com>
+" Version:     0.0.1
+" License:     This file is placed in the public domain.
 
 " Mappings for the current directory grep
 nnoremap

@@ -74,7 +74,7 @@ function! s:GetFilenames(needs_prompt)
         return ['.']
     endif
 
-    let base_prompt = "Enter one filename at a time or press <enter> to skip"
+    let base_prompt = "Enter filenames or empty string"
     let filenames = []
 
     while 1

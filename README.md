@@ -14,6 +14,10 @@ This plugin's has 2 goals:
 
 Use pathogen or a pathogen compatible plugin manager.
 
+If you are using git for source code management you should have your grepprg
+option set to some thing like this:
+    set grepprg=git\ grep\ -n\ $*
+
 ## Suggested ~/.vimrc mappings
 
     nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
@@ -25,13 +29,11 @@ Use pathogen or a pathogen compatible plugin manager.
 
 `<leader>giw` will grep the current directory for the word under the cursor and
 open the quickfix window.
-
 `<leader>ga(` will grep for what's inside the parenthesis including the
 parenthesis.
-
 `<leader>gi'` will grep for what's inside the quotes.
-
 Visually select some characters and type `<leader>g`. This will grep for the
 selected text.
 
-You can also be prompted for files to grep by using the `<leader><leader>g` mapping.
+You can also be prompted for files to grep by using the same motions or visual
+selection but with the `<leader><leader>g` mapping.

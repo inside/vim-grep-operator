@@ -29,11 +29,9 @@ option set to something like this:
 ## Examples
 
 `<leader>giw` will grep the current directory for the word under the cursor and
-open the quickfix window.
-
+open the quickfix window.  
 `<leader>ga(` will grep for what's inside the parenthesis including the
-parenthesis.
-
+parenthesis.  
 `<leader>gi'` will grep for what's inside the quotes.
 
 Visually select some characters and type `<leader>g`. This will grep for the
@@ -44,7 +42,7 @@ selection but with the `<leader><leader>g` mapping.
 
 ## Useful readings
 
-`:h grepprg`
-`:h quickfix`
-`:h text-objects`
+`:h grepprg`  
+`:h quickfix`  
+`:h text-objects`  
 http://learnvimscriptthehardway.stevelosh.com/ and specifically chapters 32, 33, 34

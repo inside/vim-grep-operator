@@ -41,3 +41,10 @@ selected text.
 
 You can also be prompted for files to grep by using the same motions or visual
 selection but with the `<leader><leader>g` mapping.
+
+## Useful readings
+
+`:h grepprg`
+`:h quickfix`
+`:h text-objects`
+http://learnvimscriptthehardway.stevelosh.com/ and specifically chapters 32, 33, 34

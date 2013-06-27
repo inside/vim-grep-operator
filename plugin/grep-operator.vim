@@ -3,7 +3,7 @@
 " Version:     0.0.1
 " License:     This file is placed in the public domain.
 
-" Mappings for the current directory grep
+" Mappings for the current directory grep {{{
 nnoremap
             \ <unique> <script>
             \ <Plug>GrepOperatorOnCurrentDirectory
@@ -20,8 +20,9 @@ vnoremap
             \ <silent>
             \ <SID>GrepOperatorOnCurrentDirectory
             \ :<c-u>call <SID>GrepOperatorOnCurrentDirectory(visualmode())<cr>
+" }}}
 
-" Mappings with filenames prompt
+" Mappings with filenames prompt {{{
 nnoremap
             \ <unique> <script>
             \ <Plug>GrepOperatorWithFilenamePrompt
@@ -38,16 +39,19 @@ vnoremap
             \ <silent>
             \ <SID>GrepOperatorWithFilenamePrompt
             \ :<c-u>call <SID>GrepOperatorWithFilenamePrompt(visualmode())<cr>
+" }}}
 
-function! s:GrepOperatorOnCurrentDirectory(type)
+function! s:GrepOperatorOnCurrentDirectory(type) " {{{
     call s:GrepOperator(a:type, 0)
 endfunction
+" }}}
 
-function! s:GrepOperatorWithFilenamePrompt(type)
+function! s:GrepOperatorWithFilenamePrompt(type) " {{{
     call s:GrepOperator(a:type, 1)
 endfunction
+" }}}
 
-function! s:GrepOperator(type, needs_prompt)
+function! s:GrepOperator(type, needs_prompt) " {{{
     " Can't use @", because a double quote is a vimscript comment
     let s:saved_unamed_register = @@
     let filenames = s:GetFilenames(a:needs_prompt)
@@ -65,8 +69,9 @@ function! s:GrepOperator(type, needs_prompt)
     " Restore the unamed register
     let @@ = s:saved_unamed_register
 endfunction
+" }}}
 
-function! s:GetPattern(type)
+function! s:GetPattern(type) " {{{
     if a:type ==# 'v'
         " Yank the last visual selection
         normal! gvy 
@@ -83,8 +88,9 @@ function! s:GetPattern(type)
     " returns the default register
     return @@
 endfunction
+" }}}
 
-function! s:Grep(pattern, filenames)
+function! s:Grep(pattern, filenames) " {{{
     " Execute the command and don't jump to the first match (The :grep! form
     " does that)
     silent execute
@@ -92,8 +98,9 @@ function! s:Grep(pattern, filenames)
                 \ . shellescape(a:pattern) . ' '
                 \ . join(map(copy(a:filenames), "shellescape(v:val)"), ' ')
 endfunction
+" }}}
 
-function! s:GetFilenames(needs_prompt)
+function! s:GetFilenames(needs_prompt) " {{{
     if !a:needs_prompt
         return ['.']
     endif
@@ -121,3 +128,4 @@ function! s:GetFilenames(needs_prompt)
 
     return filenames
 endfunction
+" }}}

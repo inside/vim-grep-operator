@@ -10,6 +10,15 @@ This plugin's has 2 goals:
 * bring motion and visual selection to the :grep command
 * open the quickfix window on the fly for easy file match navigation
 
+`<leader>g{motion}` or `<leader>g` on a visual selection will produce this output:
+
+![Grep on the current directory](http://i.imgur.com/blQeg2R.png)
+
+`<leader><leader>g{motion}` or `<leader><leader>g` will prompt you for filenames
+and will produce this output:
+
+![Prompt for directories before greping](http://i.imgur.com/wjCQhIG.png)
+
 ## Installation
 
 Use pathogen or a pathogen compatible plugin manager.

@@ -1,0 +1,1 @@
+*grep-operator.txt*   Bring motion and visual selection to the :grep command.

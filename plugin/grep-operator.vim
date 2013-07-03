@@ -5,7 +5,7 @@
 
 " Mappings for the current directory grep {{{
 nnoremap
-            \ <unique> <script>
+            \ <script>
             \ <Plug>GrepOperatorOnCurrentDirectory
             \ <SID>GrepOperatorOnCurrentDirectory
 nnoremap
@@ -13,7 +13,7 @@ nnoremap
             \ <SID>GrepOperatorOnCurrentDirectory
             \ :set operatorfunc=<SID>GrepOperatorOnCurrentDirectory<cr>g@
 vnoremap
-            \ <unique> <script>
+            \ <script>
             \ <Plug>GrepOperatorOnCurrentDirectory
             \ <SID>GrepOperatorOnCurrentDirectory
 vnoremap
@@ -24,7 +24,7 @@ vnoremap
 
 " Mappings with filenames prompt {{{
 nnoremap
-            \ <unique> <script>
+            \ <script>
             \ <Plug>GrepOperatorWithFilenamePrompt
             \ <SID>GrepOperatorWithFilenamePrompt
 nnoremap
@@ -32,7 +32,7 @@ nnoremap
             \ <SID>GrepOperatorWithFilenamePrompt
             \ :set operatorfunc=<SID>GrepOperatorWithFilenamePrompt<cr>g@
 vnoremap
-            \ <unique> <script>
+            \ <script>
             \ <Plug>GrepOperatorWithFilenamePrompt
             \ <SID>GrepOperatorWithFilenamePrompt
 vnoremap

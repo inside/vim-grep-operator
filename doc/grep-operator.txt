@@ -1,1 +1,64 @@
-*grep-operator.txt*   Bring motion and visual selection to the :grep command.
+*grep-operator.txt* Bring motion and visual selection to the :grep command
+
+        _____ _           __     ___              ____                ~
+       |_   _| |__   ___  \ \   / (_)_ __ ___    / ___|_ __ ___ _ __  ~
+         | | | '_ \ / _ \  \ \ / /| | '_ ` _ \  | |  _| '__/ _ \ '_ \ ~
+         | | | | | |  __/   \ V / | | | | | | | | |_| | | |  __/ |_) |~
+         |_| |_| |_|\___|    \_/  |_|_| |_| |_|  \____|_|  \___| .__/ ~
+                                                               |_|    ~
+                    ___                       _                       ~
+                   / _ \ _ __   ___ _ __ __ _| |_ ___  _ __           ~
+                  | | | | '_ \ / _ \ '__/ _` | __/ _ \| '__|          ~
+                  | |_| | |_) |  __/ | | (_| | || (_) | |             ~
+                   \___/| .__/ \___|_|  \__,_|\__\___/|_|             ~
+                        |_|                                           ~
+
+
+==============================================================================
+CONTENTS                                                *GrepOperatorContents*
+
+    1. Introduction ......... |GrepOperatorIntroduction|
+    2. Mappings ............. |GrepOperatorMappings|
+    3. Examples..... ........ |GrepOperatorExamples|
+
+
+==============================================================================
+1. Introduction                                     *GrepOperatorIntroduction*
+
+The vim grep operator plugin, inspired by Steve Losh and his book:
+http://learnvimscriptthehardway.stevelosh.com/
+
+This plugin's has 2 goals:
+
+* bring motion and visual selection to the :grep command
+* open the quickfix window on the fly for easy file match navigation
+
+
+==============================================================================
+2. Mappings                                             *GrepOperatorMappings*
+
+This plugin come without any mappings so you can configure them by yourself
+and won't overwrite any of your settings. The recommended mappings are:
+
+    nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
+    vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
+    nmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
+    vmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
+
+
+==============================================================================
+3. Examples                                             *GrepOperatorExamples*
+
+<leader>giw will grep the current directory for the word under the cursor and
+open the quickfix window.
+
+<leader>ga( will grep for what's inside the parenthesis including the
+parenthesis.
+
+<leader>gi' will grep for what's inside the quotes.
+
+Visually select some characters and type <leader>g. This will grep for the
+selected text.
+
+You can also be prompted for files to grep by using the same motions or visual
+selection but with the <leader><leader>g mapping.

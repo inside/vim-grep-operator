@@ -19,7 +19,7 @@ CONTENTS                                                *GrepOperatorContents*
 
     1. Introduction ......... |GrepOperatorIntroduction|
     2. Mappings ............. |GrepOperatorMappings|
-    3. Examples..... ........ |GrepOperatorExamples|
+    3. Examples ............. |GrepOperatorExamples|
 
 
 ==============================================================================

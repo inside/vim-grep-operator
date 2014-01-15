@@ -21,6 +21,10 @@ function! grep_operator#GrepOperator(type, needs_prompt) " {{{
 
         " Open the quick fix window
         copen
+        " Prevents the terminal from hiding characters
+        " This appends sometimes when using external commands
+        " See :help various.txt|528
+        redraw!
     endif
 
     " Restore the unamed register
@@ -31,7 +35,7 @@ endfunction
 function! grep_operator#GetPattern(type) " {{{
     if a:type ==# 'v'
         " Yank the last visual selection
-        normal! gvy 
+        normal! gvy
     elseif a:type ==# 'char'
         " Visually yank the motion
         normal! `[v`]y

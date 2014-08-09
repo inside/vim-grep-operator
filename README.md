@@ -35,6 +35,11 @@ option set to something like this:
     nmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
     vmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
 
+## Choose your grep operator (default: grep)
+
+    let g:grep_operator = "ag"
+    let g:grep_operator = "ack"
+
 ## Examples
 
 `<leader>giw` will grep the current directory for the word under the cursor and

@@ -54,10 +54,22 @@ endfunction
 function! grep_operator#Grep(pattern, filenames) " {{{
     " Execute the command and don't jump to the first match (The :grep! form
     " does that)
+    let operator = 'grep!'
+    if exists("g:grep_operator") &&
+                \ (g:grep_operator ==? "ag") &&
+                \ executable("ag") &&
+                \ exists(":Ag")
+        let operator = 'Ag!'
+    elseif exists("g:grep_operator") &&
+                \ (g:grep_operator ==? "ack") &&
+                \ executable("ack") &&
+                \ exists(":Ack")
+        let operator = 'Ack!'
+    endif
+
     silent execute
-                \ 'grep! '
-                \ . shellescape(a:pattern) . ' '
-                \ . join(map(copy(a:filenames), "shellescape(v:val)"), ' ')
+                \ operator . ' ' . shellescape(a:pattern) . ' ' .
+                \ join(map(copy(a:filenames), "shellescape(v:val)"), ' ')
 endfunction
 " }}}
 

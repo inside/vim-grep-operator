@@ -51,24 +51,26 @@ function! grep_operator#GetPattern(type) " {{{
 endfunction
 " }}}
 
+function! grep_operator#IsPreferredOperatorAvailable(operator) "{{{
+    if exists(":" . a:operator)
+        return 1
+    endif
+
+    return 0
+endfunction
+" }}}
+
 function! grep_operator#Grep(pattern, filenames) " {{{
     " Execute the command and don't jump to the first match (The :grep! form
     " does that)
-    let operator = 'grep!'
+    let operator = 'grep'
     if exists("g:grep_operator") &&
-                \ (g:grep_operator ==? "ag") &&
-                \ executable("ag") &&
-                \ exists(":Ag")
-        let operator = 'Ag!'
-    elseif exists("g:grep_operator") &&
-                \ (g:grep_operator ==? "ack") &&
-                \ executable("ack") &&
-                \ exists(":Ack")
-        let operator = 'Ack!'
+                \ grep_operator#IsPreferredOperatorAvailable(g:grep_operator)
+        let operator = g:grep_operator
     endif
 
     silent execute
-                \ operator . ' ' . shellescape(a:pattern) . ' ' .
+                \ operator . '! ' . shellescape(a:pattern) . ' ' .
                 \ join(map(copy(a:filenames), "shellescape(v:val)"), ' ')
 endfunction
 " }}}

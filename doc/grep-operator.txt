@@ -51,12 +51,12 @@ and won't overwrite any of your settings. The recommended mappings are:
 3. Operators                                           *GrepOperatorOperators*
 
 This plugin allows the user to specify if they would like to use grep,
-ag or ack. If the operator isn't specified or Ag.vim/Ack.vim isn't
-installed, it defaults to grep. You can use ag/ack with one of the
-following commands:
+ag, ack, or something else. If the operator isn't specified or
+Ag.vim/Ack.vim isn't installed, it defaults to grep. You can use
+ag/ack with one of the following commands:
 
-    let g:grep_operator = "ag"
-    let g:grep_operator = "ack"
+    let g:grep_operator = "Ag"
+    let g:grep_operator = "Ack"
 
 
 ==============================================================================

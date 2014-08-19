@@ -61,23 +61,15 @@ endfunction
 " }}}
 
 function! grep_operator#Grep(pattern, filenames) " {{{
-    " Execute the command and don't jump to the first match (The :grep! form
-    " does that)
-    let operator = 'grep'
-    if exists("g:grep_operator")
-        if type(g:grep_operator) == type("")
-            if grep_operator#IsPreferredOperatorAvailable(g:grep_operator)
-                let operator = g:grep_operator
-            endif
-        elseif type(g:grep_operator) == type([])
-            for oper in reverse(g:grep_operator)
-                if grep_operator#IsPreferredOperatorAvailable(oper)
-                    let operator = oper
-                endif
-            endfor
-        endif
+    " Get the operator specified by the user
+    let operator = get(g:, 'grep_operator', 'grep')
+    if !grep_operator#IsPreferredOperatorAvailable(operator)
+        " If it's not available fallback to grep
+        let operator = 'grep'
     endif
 
+    " Execute the command and don't jump to the first match (The :grep! form
+    " does that)
     silent execute
                 \ operator . '! ' . shellescape(a:pattern) . ' ' .
                 \ join(map(copy(a:filenames), "shellescape(v:val)"), ' ')

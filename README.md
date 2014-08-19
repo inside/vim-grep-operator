@@ -39,7 +39,6 @@ option set to something like this:
 
     let g:grep_operator = "Ag"
     let g:grep_operator = "Ack"
-    let g:grep_operator = [ "Ag", "Ack" ]
 
 ## Examples
 

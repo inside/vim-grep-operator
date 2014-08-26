@@ -37,8 +37,8 @@ option set to something like this:
 
 ## Choose your grep operator (default: grep)
 
-    let g:grep_operator = "Ag"
-    let g:grep_operator = "Ack"
+    let g:grep_operator = 'Ag'
+    let g:grep_operator = 'Ack'
 
 ## Examples
 

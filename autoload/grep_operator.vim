@@ -51,8 +51,8 @@ function! grep_operator#GetPattern(type) " {{{
 endfunction
 " }}}
 
-function! grep_operator#IsPreferredOperatorAvailable(operator) "{{{
-    if exists(":" . a:operator)
+function! grep_operator#IsPreferredOperatorAvailable(operator) " {{{
+    if exists(':' . a:operator)
         return 1
     endif
 
@@ -72,7 +72,7 @@ function! grep_operator#Grep(pattern, filenames) " {{{
     " does that)
     silent execute
                 \ operator . '! ' . shellescape(a:pattern) . ' ' .
-                \ join(map(copy(a:filenames), "shellescape(v:val)"), ' ')
+                \ join(map(copy(a:filenames), 'shellescape(v:val)'), ' ')
 endfunction
 " }}}
 

@@ -19,7 +19,8 @@ CONTENTS                                                *GrepOperatorContents*
 
     1. Introduction ......... |GrepOperatorIntroduction|
     2. Mappings ............. |GrepOperatorMappings|
-    3. Examples ............. |GrepOperatorExamples|
+    3. Operators ............ |GrepOperatorOperators|
+    4. Examples ............. |GrepOperatorExamples|
 
 
 ==============================================================================
@@ -47,7 +48,19 @@ and won't overwrite any of your settings. The recommended mappings are:
 
 
 ==============================================================================
-3. Examples                                             *GrepOperatorExamples*
+3. Operators                                           *GrepOperatorOperators*
+
+This plugin allows the user to specify if they would like to use grep,
+ag, ack, or something else. If the operator isn't specified or
+Ag.vim/Ack.vim isn't installed, it defaults to grep. You can use
+ag/ack with one of the following commands:
+
+    let g:grep_operator = "Ag"
+    let g:grep_operator = "Ack"
+
+
+==============================================================================
+4. Examples                                             *GrepOperatorExamples*
 
 <leader>giw will grep the current directory for the word under the cursor and
 open the quickfix window.

@@ -55,8 +55,8 @@ ag, ack, or something else. If the operator isn't specified or
 Ag.vim/Ack.vim isn't installed, it defaults to grep. You can use
 ag/ack with one of the following commands:
 
-    let g:grep_operator = "Ag"
-    let g:grep_operator = "Ack"
+    let g:grep_operator = 'Ag'
+    let g:grep_operator = 'Ack'
 
 
 ==============================================================================

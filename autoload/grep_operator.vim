@@ -71,7 +71,7 @@ function! grep_operator#Grep(pattern, filenames) " {{{
     " Execute the command and don't jump to the first match (The :grep! form
     " does that)
     silent execute
-                \ operator . '! ' . shellescape(a:pattern) . ' ' .
+                \ operator . '! ' . shellescape(a:pattern, 1) . ' ' .
                 \ join(map(copy(a:filenames), "shellescape(v:val)"), ' ')
 endfunction
 " }}}

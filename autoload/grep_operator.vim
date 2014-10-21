@@ -1,23 +1,23 @@
 function! grep_operator#GrepOperatorOnCurrentDirectory(type) " {{{
-  call grep_operator#GrepOperator(a:type, 0)
+  call s:GrepOperator(a:type, 0)
 endfunction
 " }}}
 
 function! grep_operator#GrepOperatorWithFilenamePrompt(type) " {{{
-  call grep_operator#GrepOperator(a:type, 1)
+  call s:GrepOperator(a:type, 1)
 endfunction
 " }}}
 
-function! grep_operator#GrepOperator(type, needs_prompt) " {{{
+function! s:GrepOperator(type, needs_prompt) " {{{
   " Can't use @", because a double quote is a vimscript comment
   let saved_unamed_register = @@
-  let filenames = grep_operator#GetFilenames(a:needs_prompt)
-  let pattern = grep_operator#GetPattern(a:type)
+  let filenames = s:GetFilenames(a:needs_prompt)
+  let pattern = s:GetPattern(a:type)
 
   " If the pattern is valid, call our grep function
   if len(pattern) > 0
     " Look the pattern in the given filenames
-    call grep_operator#Grep(pattern, filenames)
+    call s:Grep(pattern, filenames)
 
     " Open the quick fix window
     copen
@@ -32,7 +32,7 @@ function! grep_operator#GrepOperator(type, needs_prompt) " {{{
 endfunction
 " }}}
 
-function! grep_operator#GetPattern(type) " {{{
+function! s:GetPattern(type) " {{{
   if a:type ==# 'v'
     " Yank the last visual selection
     normal! gvy
@@ -51,7 +51,7 @@ function! grep_operator#GetPattern(type) " {{{
 endfunction
 " }}}
 
-function! grep_operator#IsPreferredOperatorAvailable(operator) " {{{
+function! s:IsPreferredOperatorAvailable(operator) " {{{
   if exists(':' . a:operator)
     return 1
   endif
@@ -60,10 +60,10 @@ function! grep_operator#IsPreferredOperatorAvailable(operator) " {{{
 endfunction
 " }}}
 
-function! grep_operator#Grep(pattern, filenames) " {{{
+function! s:Grep(pattern, filenames) " {{{
   " Get the operator specified by the user
   let operator = get(g:, 'grep_operator', 'grep')
-  if !grep_operator#IsPreferredOperatorAvailable(operator)
+  if !s:IsPreferredOperatorAvailable(operator)
     " If it's not available fallback to grep
     let operator = 'grep'
   endif
@@ -76,7 +76,7 @@ function! grep_operator#Grep(pattern, filenames) " {{{
 endfunction
 " }}}
 
-function! grep_operator#GetFilenames(needs_prompt) " {{{
+function! s:GetFilenames(needs_prompt) " {{{
   if !a:needs_prompt
     return ['.']
   endif

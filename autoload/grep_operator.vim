@@ -1,14 +1,14 @@
-function! grep_operator#GrepOperatorOnCurrentDirectory(type) " {{{
+func! grep_operator#GrepOperatorOnCurrentDirectory(type) " {{{
   call s:GrepOperator(a:type, 0)
-endfunction
+endf
 " }}}
 
-function! grep_operator#GrepOperatorWithFilenamePrompt(type) " {{{
+func! grep_operator#GrepOperatorWithFilenamePrompt(type) " {{{
   call s:GrepOperator(a:type, 1)
-endfunction
+endf
 " }}}
 
-function! s:GrepOperator(type, needs_prompt) " {{{
+func! s:GrepOperator(type, needs_prompt) " {{{
   " Can't use @", because a double quote is a vimscript comment
   let saved_unamed_register = @@
   let filenames = s:GetFilenames(a:needs_prompt)
@@ -29,10 +29,10 @@ function! s:GrepOperator(type, needs_prompt) " {{{
 
   " Restore the unamed register
   let @@ = saved_unamed_register
-endfunction
+endf
 " }}}
 
-function! s:GetPattern(type) " {{{
+func! s:GetPattern(type) " {{{
   if a:type ==# 'v'
     " Yank the last visual selection
     normal! gvy
@@ -48,15 +48,15 @@ function! s:GetPattern(type) " {{{
 
   " returns the default register
   return @@
-endfunction
+endf
 " }}}
 
-function! s:IsPreferredOperatorAvailable(operator) " {{{
+func! s:IsPreferredOperatorAvailable(operator) " {{{
   return exists(':' . a:operator) > 0
-endfunction
+endf
 " }}}
 
-function! s:Grep(pattern, filenames) " {{{
+func! s:Grep(pattern, filenames) " {{{
   " Get the operator specified by the user
   let operator = get(g:, 'grep_operator', 'grep')
   if !s:IsPreferredOperatorAvailable(operator)
@@ -69,10 +69,10 @@ function! s:Grep(pattern, filenames) " {{{
   silent execute
         \ operator . '! ' . shellescape(a:pattern, 1) . ' ' .
         \ join(map(copy(a:filenames), 'shellescape(v:val)'), ' ')
-endfunction
+endf
 " }}}
 
-function! s:GetFilenames(needs_prompt) " {{{
+func! s:GetFilenames(needs_prompt) " {{{
   if !a:needs_prompt
     return ['.']
   endif
@@ -99,5 +99,5 @@ function! s:GetFilenames(needs_prompt) " {{{
   endwhile
 
   return filenames
-endfunction
+endf
 " }}}

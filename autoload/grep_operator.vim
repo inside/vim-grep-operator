@@ -52,11 +52,7 @@ endfunction
 " }}}
 
 function! s:IsPreferredOperatorAvailable(operator) " {{{
-  if exists(':' . a:operator)
-    return 1
-  endif
-
-  return 0
+  return exists(':' . a:operator) > 0
 endfunction
 " }}}
 

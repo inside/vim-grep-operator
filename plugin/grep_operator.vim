@@ -12,11 +12,11 @@ nnoremap
       \ <silent>
       \ <SID>GrepOperatorOnCurrentDirectory
       \ :set operatorfunc=grep_operator#GrepOperatorOnCurrentDirectory<cr>g@
-vnoremap
+xnoremap
       \ <script>
       \ <Plug>GrepOperatorOnCurrentDirectory
       \ <SID>GrepOperatorOnCurrentDirectory
-vnoremap
+xnoremap
       \ <silent>
       \ <SID>GrepOperatorOnCurrentDirectory
       \ :<c-u>call grep_operator#GrepOperatorOnCurrentDirectory(visualmode())<cr>
@@ -31,11 +31,11 @@ nnoremap
       \ <silent>
       \ <SID>GrepOperatorWithFilenamePrompt
       \ :set operatorfunc=grep_operator#GrepOperatorWithFilenamePrompt<cr>g@
-vnoremap
+xnoremap
       \ <script>
       \ <Plug>GrepOperatorWithFilenamePrompt
       \ <SID>GrepOperatorWithFilenamePrompt
-vnoremap
+xnoremap
       \ <silent>
       \ <SID>GrepOperatorWithFilenamePrompt
       \ :<c-u>call grep_operator#GrepOperatorWithFilenamePrompt(visualmode())<cr>

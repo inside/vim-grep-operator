@@ -14,6 +14,14 @@ func! s:GrepOperator(type, needs_prompt) " {{{
   let filenames = s:GetFilenames(a:needs_prompt)
   let pattern = s:GetPattern(a:type)
 
+  " Setting the search register allows hlsearch to highlight that pattern.
+  " It also allows using the n, N motions (find next/previous pattern).
+  " Handling the hlsearch option is up to the user.
+  if exists('g:grep_operator_set_search_register') &&
+        \ g:grep_operator_set_search_register == 1
+    let @/ = pattern
+  endif
+
   " If the pattern is valid, call our grep function
   if len(pattern) > 0
     " Look the pattern in the given filenames

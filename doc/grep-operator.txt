@@ -20,7 +20,8 @@ CONTENTS                                                *GrepOperatorContents*
     1. Introduction ......... |GrepOperatorIntroduction|
     2. Mappings ............. |GrepOperatorMappings|
     3. Operators ............ |GrepOperatorOperators|
-    4. Examples ............. |GrepOperatorExamples|
+    3. Configuration ........ |GrepOperatorConfiguration|
+    5. Examples ............. |GrepOperatorExamples|
 
 
 ==============================================================================
@@ -60,7 +61,17 @@ ag/ack with one of the following commands:
 
 
 ==============================================================================
-4. Examples                                             *GrepOperatorExamples*
+4. Configuration                                   *GrepOperatorConfiguration*
+
+Setting the search register allows hlsearch to highlight that pattern.
+It also allows using the n, N motions (find next/previous pattern).
+Handling the hlsearch option is up to you.
+
+    let g:grep_operator_set_search_register = 1
+
+
+==============================================================================
+5. Examples                                             *GrepOperatorExamples*
 
 <leader>giw will grep the current directory for the word under the cursor and
 open the quickfix window.

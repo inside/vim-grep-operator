@@ -40,6 +40,14 @@ option set to something like this:
     let g:grep_operator = 'Ag'
     let g:grep_operator = 'Ack'
 
+## Configuration
+
+Setting the search register allows hlsearch to highlight that pattern.
+It also allows using the n, N motions (find next/previous pattern).
+Handling the hlsearch option is up to you.
+
+    let g:grep_operator_set_search_register = 1
+
 ## Examples
 
 `<leader>giw` will grep the current directory for the word under the cursor and
